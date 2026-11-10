@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const profile = {
+  name: 'Your Name',
+  bio: 'Short bio goes here.',
+  avatar: 'https://assets.codepen.io/16425/image-placeholder.png',
+};
+
+const links = [
+  { label: 'Website', href: '#' },
+  { label: 'Social', href: '#' },
+  { label: 'GitHub', href: '#' },
+  { label: 'Contact', href: 'mailto:you@example.com' },
+];
+---
+
+<Layout title={`${profile.name} — Links`}>
+  <main class="mx-auto max-w-md px-6 py-16 text-center">
+    <img src={profile.avatar} alt="" class="mx-auto size-full" />
+    <h1 class="mt-4 text-xl font-semibold">{profile.name}</h1>
+    <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">{profile.bio}</p>
+
+    <ul class="mt-8 space-y-3">
+      {links.map((link) => (
+        <li><a href={link.href} class="link">{link.label}</a></li>
+      ))}
+    </ul>
+  </main>
+</Layout>
