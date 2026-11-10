@@ -29,6 +29,7 @@ Then open http://127.0.0.1:4321 for the site and http://127.0.0.1:4321/keystatic
 | --- | --- |
 | `npm run build` | Builds the static site into `dist/` |
 | `npm run preview` | Serves the built site locally |
+| `npm run check` | Type-checks `.astro` and TypeScript files |
 
 Keystatic uses **local storage**: saving in the admin writes straight to the files in `src/content/` and `public/images/avatar/`, and you commit those changes with Git. Because of that, the admin only runs during `npm run dev`. The production build is a plain static site with no `/keystatic` route and no server adapter.
 
