@@ -6,7 +6,7 @@ A small, browser-based exercise for building a Linktree-style profile page with 
 
 This is an [Astro](https://astro.build) project with Tailwind CSS v4 (via `@tailwindcss/vite`) and [Keystatic](https://keystatic.com) as a local, Git-based CMS.
 
-- `src/content/profile.yaml` — the page content (name, bio, avatar, links). Edit it in the Keystatic admin or by hand.
+- `src/content/profile.json` — the page content (name, bio, avatar, links). Edit it in the Keystatic admin or by hand.
 - `keystatic.config.ts` — the Keystatic schema: a single **Profile** entry with name, bio, optional avatar image and a list of links.
 - `src/pages/index.astro` — the links page. Reads the profile with Keystatic's reader API and renders the links with `profile.links.map(...)`.
 - `src/layouts/Layout.astro` — the HTML shell (`<head>`, `<body>` classes) and global stylesheet import.

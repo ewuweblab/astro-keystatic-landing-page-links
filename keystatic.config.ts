@@ -11,6 +11,7 @@ export default config({
     profile: singleton({
       label: 'Profile',
       path: 'src/content/profile',
+      format: 'json',
       schema: {
         name: fields.text({
           label: 'Name',

@@ -1,0 +1,22 @@
+{
+  "name": "Your Name Here",
+  "bio": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque libero perferendis, laudantium saepe id neque praesentium quae dignissimos ex provident aut assumenda ratione nemo dicta ullam, dolores voluptate laborum explicabo.",
+  "links": [
+    {
+      "label": "Website",
+      "href": "#"
+    },
+    {
+      "label": "Social",
+      "href": "#"
+    },
+    {
+      "label": "GitHub",
+      "href": "#"
+    },
+    {
+      "label": "Contact",
+      "href": "mailto:you@example.com"
+    }
+  ]
+}
