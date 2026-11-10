@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Cloudflare Worker that serves the static Astro build. There is no Worker
+  // script: Cloudflare serves the files in ./dist directly.
+  "name": "astro-keystatic-landing-page-links",
+  "compatibility_date": "2026-11-09",
+  "assets": {
+    // Output of `npm run build`.
+    "directory": "./dist",
+    // Serve dist/404.html for unknown URLs if the site ever adds one.
+    "not_found_handling": "404-page"
+  }
+}
