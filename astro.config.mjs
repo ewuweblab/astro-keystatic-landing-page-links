@@ -11,10 +11,17 @@ import tailwindcss from '@tailwindcss/vite';
 // adapter turns those two routes into a Cloudflare Worker. Every other page is
 // still prerendered to static HTML at build time.
 //
+// The adapter is only used for `astro build` and `astro preview`. In
+// `astro dev` it would run the Keystatic API inside workerd, which can't
+// read or write files on disk, so local storage (what dev uses, see
+// keystatic.config.ts) would fail. Without an adapter, dev runs everything
+// in Node.
+const isDev = process.argv.includes('dev');
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), keystatic()],
-  adapter: cloudflare({
+  adapter: isDev ? undefined : cloudflare({
     // Prerender the static pages with Node instead of Cloudflare's workerd
     // runtime. index.astro reads src/content/profile.json from disk with
     // Keystatic's reader, and that file system access needs Node.
