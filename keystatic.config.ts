@@ -1,8 +1,21 @@
 import { config, fields, singleton } from '@keystatic/core';
 
+// Where the admin saves content:
+// - `npm run dev`: local storage. Saving writes straight to the files on disk,
+//   no sign-in needed, and you commit the changes yourself.
+// - The deployed site (domain.com/keystatic): Keystatic Cloud. Editors sign in
+//   with their keystatic.cloud account, and each save becomes a commit on the
+//   GitHub repo. That commit triggers a new Cloudflare build, so the change
+//   goes live a minute or two later.
+//
+// Replace the value below with your Keystatic Cloud project, written as
+// "team-slug/project-slug" (shown in the project's URL on keystatic.cloud).
+const KEYSTATIC_CLOUD_PROJECT = 'your-team/your-project';
+
 export default config({
-  storage: {
-    kind: 'local',
+  storage: import.meta.env.DEV ? { kind: 'local' } : { kind: 'cloud' },
+  cloud: {
+    project: KEYSTATIC_CLOUD_PROJECT,
   },
   ui: {
     brand: { name: 'Links page' },

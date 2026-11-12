@@ -4,7 +4,7 @@ A small, browser-based exercise for building a Linktree-style profile page with 
 
 ## Project structure
 
-This is an [Astro](https://astro.build) project with Tailwind CSS v4 (via `@tailwindcss/vite`) and [Keystatic](https://keystatic.com) as a local, Git-based CMS.
+This is an [Astro](https://astro.build) project with Tailwind CSS v4 (via `@tailwindcss/vite`) and [Keystatic](https://keystatic.com) as a Git-based CMS: local storage in development, [Keystatic Cloud](https://keystatic.cloud) on the deployed site.
 
 - `src/content/profile.json` — the page content (name, bio, avatar, links). Edit it in the Keystatic admin or by hand.
 - `keystatic.config.ts` — the Keystatic schema: a single **Profile** entry with name, bio, optional avatar image and a list of links (each with a label, URL and optional icon).
@@ -28,11 +28,23 @@ Then open http://127.0.0.1:4321 for the site and http://127.0.0.1:4321/keystatic
 
 | Command | What it does |
 | --- | --- |
-| `npm run build` | Builds the static site into `dist/` |
-| `npm run preview` | Serves the built site locally |
+| `npm run build` | Builds the site into `dist/` (static pages in `dist/client`, the Worker in `dist/server`) |
+| `npm run preview` | Serves the built site locally in Cloudflare's runtime |
 | `npm run check` | Type-checks `.astro` and TypeScript files |
 
-Keystatic uses **local storage**: saving in the admin writes straight to the files in `src/content/` and `public/images/`, and you commit those changes with Git. Because of that, the admin only runs during `npm run dev`. The production build is a plain static site with no `/keystatic` route and no server adapter.
+Keystatic switches storage based on where it runs (see `keystatic.config.ts`):
+
+- **`npm run dev`: local storage.** Saving in the admin writes straight to the files in `src/content/` and `public/images/`, with no sign-in. You commit those changes with Git.
+- **The deployed site: Keystatic Cloud.** Editors open `https://your-domain.com/keystatic` and sign in with their keystatic.cloud account. Each save becomes a commit on the GitHub repo, which triggers a new Cloudflare build, so changes go live a minute or two later.
+
+The site is still mostly static: `index.html` is prerendered at build time. Only `/keystatic` and `/api/keystatic` run on demand, in a Cloudflare Worker built by the `@astrojs/cloudflare` adapter.
+
+### Set up Keystatic Cloud
+
+1. Sign in at [keystatic.cloud](https://keystatic.cloud) with GitHub, create a team (or use an existing one), and create a project connected to this GitHub repository.
+2. Copy the project's `team-slug/project-slug` into `KEYSTATIC_CLOUD_PROJECT` in `keystatic.config.ts`, commit and push.
+3. In the Cloudflare dashboard, connect the Worker to the GitHub repo (Workers & Pages → the Worker → Settings → Build) with build command `npm run build` and deploy command `npx wrangler deploy`, so every Keystatic commit redeploys the site.
+4. Invite editors to the team on keystatic.cloud. They don't need a GitHub account.
 
 ## Make it yours
 
