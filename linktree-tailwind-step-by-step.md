@@ -97,22 +97,21 @@ Turn `<main>` into a narrow column centred on the page. This one element sets up
 Style the avatar, name and bio as one group at the top of the page.
 
 ```html
-<img src="https://assets.codepen.io/16425/image-placeholder.png" alt="" class="mx-auto">
+<img src="https://assets.codepen.io/16425/image-placeholder.png" alt="" class="mx-auto size-full">
 <h1 class="mt-4 text-xl font-semibold">Your Name</h1>
 <p class="mt-1 text-sm text-neutral-500">Short bio goes here.</p>
 ```
 
 | Element | Class                      | What it does                                                                              |
 | ------- | -------------------------- | ----------------------------------------------------------------------------------------- |
-| `img`   | `size-24`                  | Width and height both 6rem (96px)                                                         |
-| `img`   | `rounded-full`             | Makes it a circle                                                                         |
+| `img`   | `size-full`                | Width and height both 100%, so the image fills the width of the column                    |
 | `img`   | `mx-auto`                  | Centres it. Preflight makes images `display: block`, so `text-center` alone won't move it |
 | `h1`    | `mt-4`                     | 1rem gap below the avatar                                                                 |
 | `h1`    | `text-xl font-semibold`    | Larger size and semi-bold weight                                                          |
 | `p`     | `mt-1`                     | Small 0.25rem gap, which keeps the bio grouped with the name                              |
 | `p`     | `text-sm text-neutral-500` | Smaller, grey text, so the bio reads as secondary                                         |
 
-**Check:** you see a round avatar, a bold name and a smaller grey bio, all centred and tight together.
+**Check:** you see an avatar as wide as the column, a bold name and a smaller grey bio, all centred and tight together.
 
 > **Spacing tells you what belongs together:** a small gap (`mt-1`) joins the name and bio; bigger gaps (`mt-4`, and `mt-8` in the next step) separate groups.
 
@@ -206,7 +205,7 @@ Compare your file with this one. The classes in each attribute follow a consiste
 <body class="min-h-dvh bg-neutral-50 text-neutral-900 antialiased dark:bg-neutral-950 dark:text-neutral-100">
   <main class="mx-auto max-w-md px-6 py-16 text-center">
 
-    <img src="https://assets.codepen.io/16425/image-placeholder.png" alt="" class="mx-auto size-24 rounded-full">
+    <img src="https://assets.codepen.io/16425/image-placeholder.png" alt="" class="mx-auto size-full">
     <h1 class="mt-4 text-xl font-semibold">Your Name</h1>
     <p class="mt-1 text-sm text-neutral-500 dark:text-neutral-400">Short bio goes here.</p>
 

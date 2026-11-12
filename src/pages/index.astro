@@ -34,10 +34,18 @@ const avatar = profile.avatar ?? 'https://assets.codepen.io/16425/image-placehol
       One <li> per link, in the order set in the admin. The shared `.link`
       class (src/styles/global.css) holds the button styles, so they live in
       one place instead of being repeated on every <a>.
+
+      The icon is optional and only rendered when one was uploaded. Its alt=""
+      marks it as decorative: the label next to it already names the link.
     */}
     <ul class="mt-8 space-y-3">
       {profile.links.map((link) => (
-        <li><a href={link.href} class="link">{link.label}</a></li>
+        <li>
+          <a href={link.href} class="link">
+            {link.icon && <img src={link.icon} alt="" class="link-icon" />}
+            <span>{link.label}</span>
+          </a>
+        </li>
       ))}
     </ul>
   </main>

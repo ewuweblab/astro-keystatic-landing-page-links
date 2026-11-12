@@ -38,6 +38,12 @@ export default config({
               description: 'A full URL (https://…) or mailto:you@example.com',
               validation: { length: { min: 1 } },
             }),
+            icon: fields.image({
+              label: 'Icon',
+              description: 'Optional. Shown to the left of the label. A square image (SVG or PNG) works best.',
+              directory: 'public/images/icons',
+              publicPath: '/images/icons/',
+            }),
           }),
           {
             label: 'Links',
