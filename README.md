@@ -2,6 +2,8 @@
 
 A small, browser-based exercise for building a Linktree-style profile page with Tailwind CSS. The tutorial takes a plain HTML page through layout, profile styling, link buttons, keyboard focus states, and dark mode.
 
+> **Students: start with [SETUP.md](SETUP.md).** It shows how to make your own copy with **Use this template**, put it online with Cloudflare, and edit it at `your-site/keystatic` with Keystatic Cloud.
+
 ## Project structure
 
 This is an [Astro](https://astro.build) project with Tailwind CSS v4 (via `@tailwindcss/vite`) and [Keystatic](https://keystatic.com) as a Git-based CMS: local storage in development, [Keystatic Cloud](https://keystatic.cloud) on the deployed site.
@@ -14,6 +16,7 @@ This is an [Astro](https://astro.build) project with Tailwind CSS v4 (via `@tail
 - `public/images/avatar/` — avatar images uploaded through Keystatic land here.
 - `public/images/icons/` — link icons uploaded through Keystatic land here.
 - `linktree-tailwind-step-by-step.md` — the eight-step Tailwind tutorial and styling extensions.
+- `SETUP.md` — step-by-step setup for your own copy: template → Keystatic Cloud → Cloudflare.
 
 ## Get started
 
@@ -39,12 +42,7 @@ Keystatic switches storage based on where it runs (see `keystatic.config.ts`):
 
 The site is still mostly static: `index.html` is prerendered at build time. Only `/keystatic` and `/api/keystatic` run on demand, in a Cloudflare Worker built by the `@astrojs/cloudflare` adapter.
 
-### Set up Keystatic Cloud
-
-1. Sign in at [keystatic.cloud](https://keystatic.cloud) with GitHub, create a team (or use an existing one), and create a project connected to this GitHub repository.
-2. Copy the project's `team-slug/project-slug` into `KEYSTATIC_CLOUD_PROJECT` in `keystatic.config.ts`, commit and push.
-3. In the Cloudflare dashboard, connect the Worker to the GitHub repo (Workers & Pages → the Worker → Settings → Build) with build command `npm run build` and deploy command `npx wrangler deploy`, so every Keystatic commit redeploys the site.
-4. Invite editors to the team on keystatic.cloud. They don't need a GitHub account.
+To connect a copy of this repo to Keystatic Cloud and Cloudflare, follow [SETUP.md](SETUP.md).
 
 ## Make it yours
 
